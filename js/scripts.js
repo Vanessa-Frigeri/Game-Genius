@@ -40,7 +40,7 @@ _gui.switch.addEventListener('click', () => {
     _data.strict = false;
     _data.playerCanPlay = false;
     _data.score = 0;
-    _data.playerSequence = [];
+    _data.gameSequence = [];
     _data.playerSequence = [];
 
     disablePads();
@@ -100,7 +100,7 @@ const blink = (text, callback) => {
 
 const newColor = () => {
     if (_data.score === 99) {
-        blink("**", startGame);
+        blink("WIN", startGame);
         return;
     }
     _data.gameSequence.push(Math.floor(Math.random() * 4));
@@ -202,7 +202,7 @@ _gui.pads.forEach(pad => {
 const resetOrPlayAgain = () => {
     _data.playerCanPlay = false;
     if (_data.strict) {
-        blink("!!", () => {
+        blink("LOST", () => {
             _data.score = 0;
             _data.gameSequence = [];
             startGame();
